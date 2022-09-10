@@ -7,11 +7,9 @@ In Part II of this workshop you will create and deploy your own NFT contract on 
 
 Your local FireFly Supernode also has an IPFS node running locally. You can use FireFly's data APIs to upload your NFT image and metadata.
 
-In the `metadata` directory of this git repo, there is a file called `firefly-badge.svg`. You're welcome to use this file, or create your own artwork to upload. If I wanted to upload this file to FireFly I could use `curl` in my terminal by running:
+In the `metadata` directory of this git repo, there is a file called `firefly-badge.svg`. You're welcome to use this file, or create your own artwork to upload. You can use the [FireFly Swagger UI](http://localhost:5000/api#/Default%20Namespace/postData) to upload you image.
 
-```
-curl -F 'data=@firefly-badge.svg'  http://localhost:5000/api/v1/data
-```
+> **NOTE**: To upload a file, make sure you select `multipart/form-data` from the drop down menu on that endpoint. ![Content-Type](./images/content-type.png) You will also need to uncheck the bottom two checkboxes for the `metadata` and `validator` fields. ![Uncheck these](./images/uncheck_boxes.png)
 
 FireFly should return a payload like this:
 
@@ -31,13 +29,8 @@ FireFly should return a payload like this:
 }
 ```
 
-At this point, FireFly has only stored the file in its *private* data store. To tell FireFly that we would like to make this file available *publicly*, copy the `"id"` from the response above, and call the publish endpoint. You can either use the [Swagger UI](http://127.0.0.1:5000/api#/Default%20Namespace/postDataBlobPublish), or use `curl` in your terminal. **Be sure to replace the UUID in the path with the ID returned in the previous response.**
+At this point, FireFly has only stored the file in its *private* data store. To tell FireFly that we would like to make this file available *publicly*, copy the `"id"` from the response above, and call the publish endpoint. You can use the [FireFly Swagger UI](http://127.0.0.1:5000/api#/Default%20Namespace/postDataBlobPublish) to publish the uploaded file to IPFS. **Be sure to set the UUID in the path with the ID returned in the previous response.**
 
-```
-curl -X 'POST' \
-  'http://127.0.0.1:5000/api/v1/data/f74f4bdd-a4ae-4f38-adce-103b19ad2097/blob/publish' \
-  -H 'accept: application/json'
-```
 
 FireFly will return a response 
 
