@@ -12,7 +12,7 @@ Welcome to the FireFly Workshop at Hyperledger Global Forum 2022! We're glad you
 The workshop is divided into two sections. [Part I](./docs/part_i.md) will focus on setting everything up and minting your first NFT using a contract that already exists on chain. [Part II](./docs/part_ii.md) will walk you through launching your own token contract on a public testnet using FireFly.
 
 <figure>
-<img src="./resources/firefly-badge.svg" alt="Trulli" style="width:100%">
+<img src="./resources/firefly-badge.svg" alt="FireFly Badge" style="width:100%">
 <figcaption align = "center"><b>Claim a copy of this exclusive FireFly Workshop Participant badge on a public chain!</b></figcaption>
 </figure>
 

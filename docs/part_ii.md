@@ -35,7 +35,9 @@ When you click **Execute** to upload the file, FireFly should return a payload l
 }
 ```
 
-At this point, FireFly has only stored the file in its *private* data store. To tell FireFly that we would like to make this file available *publicly*, copy the UUID from the `"id"` field in the response above, and call the publish endpoint. You can use the [FireFly Swagger UI](http://127.0.0.1:5000/api#/Default%20Namespace/postDataBlobPublish) to publish the uploaded file to IPFS. **Be sure to set the `dataid` field in the path with the ID returned in the previous response.**
+At this point, FireFly has only stored the file in its *private* data store. To tell FireFly that we would like to make this file available *publicly*, copy the UUID from the `"id"` field in the response above, and call the publish endpoint. You can use the [FireFly Swagger UI](http://127.0.0.1:5000/api#/Default%20Namespace/postDataBlobPublish) to publish the uploaded file to IPFS. 
+
+> **NOTE:** Be sure to set the `dataid` field in the path with the ID returned in the previous response. Also clear out all of the `additionalProp` fields in the request body. Your request body should be an empty JSON object: `{}`
 
 
 FireFly will return a response like this;
@@ -127,7 +129,7 @@ ff deploy ethereum workshop <your_contract>.json
 
 ```
 {
-  "address": "0x2bf76a3ed62eff858034025660bd5071f39e5ffb"
+  "address": "0x3f09909bc983a198d7630083e4518d1ec84b8ee0"
 }
 ```
 
@@ -143,7 +145,7 @@ Now we will create a Contract Interface and API just like we did in the first pa
 
 You will need to get the ABI from the JSON file that your compiler used when ou compiled your contract. Depending on whether you used Hardhat or Remix this may vary.
 
-## Mint some tokens to your wallet
+## Mint a token to your wallet
 
 Lastly, you can open the Swagger UI for your custom contract, and mint some tokens!
 

@@ -1,3 +1,4 @@
+.DS_Store
 node_modules
 .env
 coverage
@@ -7,5 +8,7 @@ typechain-types
 
 #Hardhat files
 cache
-artifacts
-
+artifacts/*
+!artifacts/contracts
+artifacts/contracts/FireFlyWorkshopBadge.sol/*
+!artifacts/contracts/FireFlyWorkshopBadge.sol/FireFlyWorkshopBadge.json

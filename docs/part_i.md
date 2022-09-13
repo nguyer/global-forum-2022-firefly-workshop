@@ -5,7 +5,7 @@ _Hyperledger Global Forum 2022_
 Welcome to the FireFly Workshop at Hyperledger Global Forum 2022.
 We're glad you're here!
 
-In Part I of this workshop we will be setting up FireFly v1.1, walking through using FireFly as a Web3 Gateway on a public testnet, minting an NFT.
+In Part I of this workshop we will be setting up FireFly v1.1, walking through using FireFly as a Web3 Gateway on a public testnet, and minting an NFT.
 
 In Part II, we will walk through deploying your own NFT smart contract, and using FireFly to interact with it.
 
@@ -67,7 +67,7 @@ Now we can create a FireFly stack. Here is what the following flags do:
 ```
 ff init workshop 1 \
     --multiparty=false \
-    --ipfs-mode remote \
+    --ipfs-mode public \
     --blockchain-provider ethereum \
     --blockchain-connector evmconnect \
     --blockchain-node remote-rpc \
@@ -78,12 +78,12 @@ ff init workshop 1 \
 
 ## Lookup information about the contract
 
-The address for the contract we will be using is **`0x2bf76a3ed62eff858034025660bd5071f39e5ffb`**.
+The address for the contract we will be using is **`0x3f09909bc983a198d7630083e4518d1ec84b8ee0`**.
 
-This contract was deployed at block **`27901467`**.
+This contract was deployed at block **`28081384`**.
 
 You can verify the details of this contract on Polygonscan:
-[https://mumbai.polygonscan.com/address/0x2bf76a3ed62eff858034025660bd5071f39e5ffb](https://mumbai.polygonscan.com/address/0x2bf76a3ed62eff858034025660bd5071f39e5ffb)
+[https://mumbai.polygonscan.com/address/0x3f09909bc983a198d7630083e4518d1ec84b8ee0](https://mumbai.polygonscan.com/address/0x3f09909bc983a198d7630083e4518d1ec84b8ee0)
 
 You can also lookup the block number in which the contract was deployed by clicking the link to the transaction hash on the right side of the page under **More Info**.
 
@@ -98,8 +98,8 @@ Navigate to the FireFly Sandbox at: [http://127.0.0.1:5109](http://127.0.0.1:510
 | **Pool Name**        | `HGFFF2022`                                  |
 | **Pool Symbol**      | (leave blank)                                |
 | **Type**             | Non-fungible                                 |
-| **Contract address** | `0x2bf76a3ed62eff858034025660bd5071f39e5ffb` |
-| **Block number**     | `27901467`                                   |
+| **Contract address** | `0x3f09909bc983a198d7630083e4518d1ec84b8ee0` |
+| **Block number**     | `28081384`                                   |
 
 ![Create a Token Pool](./images/create_token_pool.png)
 
@@ -164,7 +164,7 @@ The next two sections will walk you through the steps to do this.
 1. Still on the same page in the Sandbox, expand the `Register a Contract API` section.
 1. Ensure the **`HGFFF20222`** Contract Interface created in the step above is selected
 1. Give it a URL-safe name such as **`HGFFF20222`**
-1. Paste the contract address: **`0x2bf76a3ed62eff858034025660bd5071f39e5ffb`**
+1. Paste the contract address: **`0x3f09909bc983a198d7630083e4518d1ec84b8ee0`**
 1. Click **Run**
 
 ### Mint your NFT
@@ -199,7 +199,7 @@ FireFly returns a payload which represents the **Operation** of invoking a smart
     "interface": "8832a7ef-7249-407c-b574-a7eb9ad1bbc8",
     "key": "0x212c8fccb357da5cdb36903056c22c6b48540065",
     "location": {
-      "address": "0x2bf76a3ed62eff858034025660bd5071f39e5ffb"
+      "address": "0x3f09909bc983a198d7630083e4518d1ec84b8ee0"
     },
     "method": {
       "description": "",
