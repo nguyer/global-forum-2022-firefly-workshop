@@ -11,7 +11,9 @@ In Part II, we will walk through deploying your own NFT smart contract, and usin
 
 ## Set up an Ethereum wallet on Polygon Mumbai Testnet
 
-To "see" your NFT and to be able to transfer it in the future, you will want an Ethereum wallet app. This can be an app on your computer, or on your smartphone. You're welcome to use any wallet app you like, as long as it can connect to the Polygon Mumbai Testnet.
+To "see" your NFT and to be able to transfer it in the future, you will need an Ethereum wallet app. This can be an app on your smartphone, or on your computer. You're welcome to use any wallet app you like, as long as it can connect to the Polygon Mumbai Testnet.
+
+> **NOTE**: Some wallet apps do not display images in ERC-721 tokens. For example, the Metamask browser extension will not display the image, but the Metamask mobile app will.
 
 You can use an existing private key that you may have already (typically by entering your 12 word seed phrase in to the wallet), or you can create a new private key / address for this workshop.
 

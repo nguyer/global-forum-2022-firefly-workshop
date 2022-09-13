@@ -1,17 +1,23 @@
 # Hyperledger FireFly Workshop: Part II
 _Hyperledger Global Forum 2022_
 
-In Part II of this workshop you will create and deploy your own NFT contract on the Polygon Mumbai testnet. You can either use the resources provided in this git repo, or use your own contract or image.
+In Part II of this workshop you will create and deploy your own NFT contract on the Polygon Mumbai testnet. You can either use the resources provided in this git repo, or use your own smart contract and image.
 
 ## Use FireFly to upload your image
 
 Your local FireFly Supernode also has an IPFS node running locally. You can use FireFly's data APIs to upload your NFT image and metadata.
 
-In the `metadata` directory of this git repo, there is a file called `firefly-badge.svg`. You're welcome to use this file, or create your own artwork to upload. You can use the [FireFly Swagger UI](http://localhost:5000/api#/Default%20Namespace/postData) to upload you image.
+In the `resources` directory of this git repo, there is a file called `firefly-badge.svg`. You're welcome to use this file, or create your own artwork to upload. You can use the [FireFly Swagger UI](http://localhost:5000/api#/Default%20Namespace/postData) to upload you image.
 
-> **NOTE**: To upload a file, make sure you select `multipart/form-data` from the drop down menu on that endpoint. ![Content-Type](./images/content-type.png) You will also need to uncheck the bottom two checkboxes for the `metadata` and `validator` fields. ![Uncheck these](./images/uncheck_boxes.png)
+> **NOTE**: To upload a file through the Swagger UI, make sure you select `multipart/form-data` from the drop down menu on that endpoint.
+>
+> <img alt="Content-Type" src="./images/content-type.png" width="253px" />
+>
+> You will also need to uncheck the bottom two checkboxes for the `metadata` and `validator` fields.
+>
+> <img alt="Uncheck these" src="./images/uncheck_boxes.png" width="538px"/>
 
-FireFly should return a payload like this:
+When you click **Execute** to upload the file, FireFly should return a payload like this:
 
 ```json
 {
@@ -29,10 +35,10 @@ FireFly should return a payload like this:
 }
 ```
 
-At this point, FireFly has only stored the file in its *private* data store. To tell FireFly that we would like to make this file available *publicly*, copy the `"id"` from the response above, and call the publish endpoint. You can use the [FireFly Swagger UI](http://127.0.0.1:5000/api#/Default%20Namespace/postDataBlobPublish) to publish the uploaded file to IPFS. **Be sure to set the UUID in the path with the ID returned in the previous response.**
+At this point, FireFly has only stored the file in its *private* data store. To tell FireFly that we would like to make this file available *publicly*, copy the UUID from the `"id"` field in the response above, and call the publish endpoint. You can use the [FireFly Swagger UI](http://127.0.0.1:5000/api#/Default%20Namespace/postDataBlobPublish) to publish the uploaded file to IPFS. **Be sure to set the `dataid` field in the path with the ID returned in the previous response.**
 
 
-FireFly will return a response 
+FireFly will return a response like this;
 
 ```json
 {
@@ -51,13 +57,15 @@ FireFly will return a response
 }
 ```
 
-Here I can see that FireFly has uploaded my image to my local IPFS node its CID is:
+Here I can see in the `"public"` field that FireFly has uploaded my image to my local IPFS node its CID is:
 
 ```
 QmYM6ph25YpDZa2u4joPRhGEjnkHGp9JqZjQDpvdgPZ9Vj
 ```
 
-Take note of this hash, because we will need to put it in your `metadata.json` file in the next step.
+Take note of this CID, because we will need to put it in your `metadata.json` file in the next step.
+
+> **NOTE**: It may take some time for your file to be readily accessible from public IPFS gateways. I've seen it take up to 15 minutes to replicate sometimes.
 
 ## Create your `metadata.json` file
 
@@ -68,15 +76,15 @@ Take note of this hash, because we will need to put it in your `metadata.json` f
   "description": "Exclusive promotional badge for participating in the FireFly Workshop at Hyperledger Global Forum 2022", 
   "external_url": "https://hyperledger.github.io/firefly", 
   "image": "https://ipfs.io/ipfs/QmYM6ph25YpDZa2u4joPRhGEjnkHGp9JqZjQDpvdgPZ9Vj", 
-  "name": "Hyperledger Global Forum FireFly Workshop Badge"
+  "name": "Hyperledger FireFly Workshop Participant - Global Forum 2022"
 }
 ```
 
-You should create your own `metadata.json` document and be sure that the image URL points to the IPFS hash for your file that you uploaded in the previous step.
+You should create your own `metadata.json` document and be sure that the image URL points to the IPFS CID for your file that you uploaded in the previous step.
 
 ## Upload your `metadata.json` file to IPFS
 
-To upload your `metadata.json`, repeat the steps from the section above where you used FireFly's API to upload your image. Make note of the IPFS CID for your file. In my case, mine was:
+To upload your `metadata.json`, repeat the steps from the section above where you used FireFly's API to upload your image. Make note of the IPFS CID for your `metadata.json` file. In my case, mine was:
 
 ```
 QmXrjciH9hPzKEUpvZLG84gMhMrXN1DLWc6CpbwBg8P6j4
@@ -101,7 +109,7 @@ This will create a directory structure under `artifacts` which will contain a `.
 
 If you started with the The [Open Zeppelin Contracts Wizard](https://docs.openzeppelin.com/contracts/4.x/wizard), you can click **Open in Remix**. This will open the Remix web based IDE which can compile your contract for you.
 
-![Remix Compile](./images/remix_compile.png)
+<img alt="Remix Compile" src="./images/remix_compile.png" width="296px"/>
 
 You can then click the **ABI** button to copy your contract's ABI to your clipboard.
 
@@ -118,10 +126,12 @@ ff deploy ethereum workshop <your_contract>.json
 ```
 
 ```
-PUT SAMPLE OUTPUT HERE
+{
+  "address": "0x2bf76a3ed62eff858034025660bd5071f39e5ffb"
+}
 ```
 
-It's a good idea to search for your transaction on [Polygonscan](https://mumbai.polygonscan.com/) to find out what block number it first appeared in. You will need this for the next step.
+It's a good idea to search for your contract address on [Polygonscan](https://mumbai.polygonscan.com/) to find out what block number in which the contract was constructed. You will need this for the next step.
 
 ## Create a new token pool
 
@@ -131,6 +141,12 @@ At this point we will create a new Token Pool for your contract. You can do this
 
 Now we will create a Contract Interface and API just like we did in the first part of the workshop with the [FireFly Sandbox](http://127.0.0.1:5109/home?action=contracts.interface).
 
+You will need to get the ABI from the JSON file that your compiler used when ou compiled your contract. Depending on whether you used Hardhat or Remix this may vary.
+
 ## Mint some tokens to your wallet
 
 Lastly, you can open the Swagger UI for your custom contract, and mint some tokens!
+
+## Congratulations!
+
+Congratulations! You've launched your very own NFT contract using FireFly on a public blockchain! Now you are equipped with the tools you need to launch your own Web3 project on public chains.
