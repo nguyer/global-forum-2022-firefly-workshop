@@ -78,12 +78,12 @@ ff init workshop 1 \
 
 ## Lookup information about the contract
 
-The address for the contract we will be using is **`0x1a17f284ce0a15344cd98424d85abd6e634d6caa`**.
+The address for the contract we will be using is **`0x9ddf36dde4ef2d2f2da54ef82441e640832870eb`**.
 
-This contract was deployed at block **`28095395`**.
+This contract was deployed at block **`28096542`**.
 
 You can verify the details of this contract on Polygonscan:
-[https://mumbai.polygonscan.com/address/0x1a17f284ce0a15344cd98424d85abd6e634d6caa](https://mumbai.polygonscan.com/address/0x1a17f284ce0a15344cd98424d85abd6e634d6caa)
+[https://mumbai.polygonscan.com/address/0x9ddf36dde4ef2d2f2da54ef82441e640832870eb](https://mumbai.polygonscan.com/address/0x9ddf36dde4ef2d2f2da54ef82441e640832870eb)
 
 You can also lookup the block number in which the contract was deployed by clicking the link to the transaction hash on the right side of the page under **More Info**.
 
@@ -98,8 +98,8 @@ Navigate to the FireFly Sandbox at: [http://127.0.0.1:5109](http://127.0.0.1:510
 | **Pool Name**        | `HGFFF2022`                                  |
 | **Pool Symbol**      | (leave blank)                                |
 | **Type**             | Non-fungible                                 |
-| **Contract address** | `0x1a17f284ce0a15344cd98424d85abd6e634d6caa` |
-| **Block number**     | `28095395`                                   |
+| **Contract address** | `0x9ddf36dde4ef2d2f2da54ef82441e640832870eb` |
+| **Block number**     | `28096542`                                   |
 
 ![Create a Token Pool](./images/create_token_pool.png)
 
@@ -164,7 +164,7 @@ The next two sections will walk you through the steps to do this.
 1. Still on the same page in the Sandbox, expand the `Register a Contract API` section.
 1. Ensure the **`HGFFF20222`** Contract Interface created in the step above is selected
 1. Give it a URL-safe name such as **`HGFFF20222`**
-1. Paste the contract address: **`0x1a17f284ce0a15344cd98424d85abd6e634d6caa`**
+1. Paste the contract address: **`0x9ddf36dde4ef2d2f2da54ef82441e640832870eb`**
 1. Click **Run**
 
 ### Mint your NFT
@@ -199,7 +199,7 @@ FireFly returns a payload which represents the **Operation** of invoking a smart
     "interface": "8832a7ef-7249-407c-b574-a7eb9ad1bbc8",
     "key": "0x212c8fccb357da5cdb36903056c22c6b48540065",
     "location": {
-      "address": "0x1a17f284ce0a15344cd98424d85abd6e634d6caa"
+      "address": "0x9ddf36dde4ef2d2f2da54ef82441e640832870eb"
     },
     "method": {
       "description": "",

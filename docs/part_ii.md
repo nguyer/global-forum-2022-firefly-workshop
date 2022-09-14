@@ -129,7 +129,7 @@ ff deploy ethereum workshop <your_contract>.json
 
 ```
 {
-  "address": "0x1a17f284ce0a15344cd98424d85abd6e634d6caa"
+  "address": "0x9ddf36dde4ef2d2f2da54ef82441e640832870eb"
 }
 ```
 
