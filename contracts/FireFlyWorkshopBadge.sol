@@ -27,7 +27,7 @@ contract FireFlyWorkshopBadge is ERC721, Pausable, Ownable {
     }
 
     function _baseURI() internal pure override returns (string memory) {
-        return "https://ipfs.io/ipfs/QmejdsXbS8azHfDBGBcTdSqADe55ourjjrTcHCnCP11JRf";
+        return "https://ipfs.io/ipfs/QmPE12GpZuEB2LL3aUqKZzTu2widAtwqSVY8L9f62AcUVm";
     }
 
     function pause() public onlyOwner {
